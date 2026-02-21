@@ -1,0 +1,31 @@
+{
+  "name": "synccount",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "https://github.com/marechalg/SyncCount#readme",
+  "bugs": {
+    "url": "https://github.com/marechalg/SyncCount/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marechalg/SyncCount.git"
+  },
+  "license": "MIT",
+  "author": "Li Koubra",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "tsx --tsconfig tsconfig.json src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

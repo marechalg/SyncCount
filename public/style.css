@@ -1,0 +1,60 @@
+/*********************/ 
+/*** MEDIA QUERIES ***/
+/*********************/
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: #fefefe;
+        --text: #000000;
+    }
+
+    header img {
+        filter: brightness(0);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #000000;
+        --text: #fefefe;
+    }
+}
+
+/*********************/ 
+/******* STYLE *******/
+/*********************/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img, #count {
+    user-select: none;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+header {
+    padding: 1em;
+}
+
+header img {
+    width: 8em;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+#count {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 10em;
+}
