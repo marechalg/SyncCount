@@ -56,5 +56,5 @@ main {
     text-align: center;
     width: 100%;
     font-weight: bold;
-    font-size: 10em;
+    font-size: calc(100vw / 10);
 }
