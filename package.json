@@ -1,6 +1,6 @@
 {
   "name": "synccount",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "",
   "homepage": "https://github.com/marechalg/SyncCount#readme",
   "bugs": {
@@ -16,7 +16,8 @@
   "scripts": {
     "dev": "tsx --tsconfig tsconfig.json src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "release": "tsx release.ts"
   },
   "dependencies": {
     "express": "^5.2.1",
