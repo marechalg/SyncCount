@@ -29,8 +29,8 @@ run('npm install --package-lock-only');
 const VERSION: string = JSON.parse(readFileSync('package.json', 'utf-8')).version;
 console.info(`Bumped to V${VERSION}`);
 
-run('git add package.json');
-run(`git commit --amend -m "${MESSAGE ?? `Release ${ALIAS[TYPE]}: ${VERSION}`}"`);
+run('git add package.json package-lock.json');
+run(`git commit --amend -m "${MESSAGE ?? `Release ${ALIAS[TYPE]}: ${VERSION}`}" --no-edit`);
 run(`git tag -a ${VERSION} -m "${VERSION}"`);
 
 console.log(`Releasing ${ALIAS[TYPE]} V${VERSION}...`);
