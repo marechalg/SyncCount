@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
-import path from 'path'
+import { readFileSync, writeFileSync } from 'fs';
 
 const PORT: number = 3001;
 
@@ -10,6 +10,11 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, { cors: { origin: '*' } });
 
 let count: number = 0;
+try {
+    count = JSON.parse(readFileSync('data/count.json', 'utf-8')).count;
+} catch (err) {
+    if (err instanceof Error) console.error(`Error reading count.json : ${err.stack}`);
+}
 
 interface ClickPayload {
     userId: string,
@@ -17,23 +22,23 @@ interface ClickPayload {
 }
 
 io.on('connection', (sock: Socket) => {
-    console.log(`User connected : ${sock.id}`);
-
     sock.emit('update', { count, lastClick: null });
 
     sock.on('increment', (payload: ClickPayload) => {
         count++;
         io.emit('update', { count, lastClick: payload });
+        
+        setImmediate(() => {
+            writeFileSync('data/count.json', JSON.stringify({ count }))
+        })
     })
 
-    sock.on('disconnect', () => {
-        console.log(`User disconnected : ${sock.id}`);
-    })
+    sock.on('disconnect', () => {})
 })
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public'));
 app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile('public/index.html');
 })
 
 httpServer.listen(PORT, () => {
