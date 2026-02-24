@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 import { readFileSync, writeFileSync } from 'fs';
+import ClickPayload from './ClickPayload';
 
 const PORT: number = 3001;
 
@@ -14,11 +15,6 @@ try {
     count = JSON.parse(readFileSync('data/count.json', 'utf-8')).count;
 } catch (err) {
     if (err instanceof Error) console.error(`Error reading count.json : ${err.stack}`);
-}
-
-interface ClickPayload {
-    userId: string,
-    avater: string
 }
 
 io.on('connection', (sock: Socket) => {

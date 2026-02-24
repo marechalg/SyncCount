@@ -1,3 +1,5 @@
+import ClickPayload from '../src/ClickPayload';
+
 const PROT = 'http';
 const HOST = '10.241.71.34';
 const PORT = 3001;
