@@ -30,7 +30,7 @@ console.info(`Bumped to V${VERSION}`);
 
 run('git add package.json');
 run(`git commit --amend -m "${MESSAGE ?? `Release ${ALIAS[TYPE]}: ${VERSION}`}"`);
-run(`git tag ${VERSION}`);
+run(`git tag -a ${VERSION} -m "${VERSION}"`);
 
 console.log(`Releasing ${ALIAS[TYPE]} V${VERSION}...`);
 run('git push origin main --follow-tags');
