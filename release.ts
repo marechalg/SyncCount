@@ -24,6 +24,7 @@ console.log('Bumping...');
 run('git add -A');
 run(`git commit -m "temp"`);
 run(`npm version ${ALIAS[TYPE]} --no-git-tag-version`);
+run('npm install --package-lock-only');
 
 const VERSION: string = JSON.parse(readFileSync('package.json', 'utf-8')).version;
 console.info(`Bumped to V${VERSION}`);
