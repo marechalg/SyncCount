@@ -1,0 +1,32 @@
+name: Deployment
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build & push image
+        run: |
+          echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker build -t ghcr.io/${{ github.repository }}/synccount:latest .
+          docker push ghcr.io/${{ github.repository }}/synccount:latest
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USER }}
+          key: ${{ secrets.PI_SSH }}
+          script: |
+            echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            docker pull ghcr.io/${{ github.repository }}/synccount:latest
+            docker stop synccount || true
+            docker rm synccount || true
+            docker run -d --name synccount --restart unless-stopped \
+              -e HOST=${{ secrets.HOST }} \
+              ghcr.io/${{ github.repository }}/synccount:latest

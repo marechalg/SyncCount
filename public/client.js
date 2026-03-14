@@ -1,8 +1,8 @@
 import ClickPayload from '../src/ClickPayload';
 
 const PROT = 'http';
-const HOST = '10.241.71.34';
-const PORT = 3001;
+const HOST = process.env.HOST;
+const PORT = 3000;
 
 const sock = io(`${PROT}://${HOST}:${PORT}`);
 const count = document.getElementById('count');

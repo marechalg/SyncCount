@@ -4,7 +4,7 @@ import { Server, Socket } from 'socket.io';
 import { readFileSync, writeFileSync } from 'fs';
 import ClickPayload from './ClickPayload';
 
-const PORT: number = 3001;
+const PORT: number = 3000;
 
 const app = express();
 const httpServer = createServer(app);

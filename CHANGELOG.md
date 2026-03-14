@@ -1,6 +1,6 @@
 ### What's new
 #### Enhancements
-- Added a release automation script ([release.ts](./release.ts))
-automatically bumps the version, pushes to Git and creats a release
+- Added CI/CD pipeline via GitHub Actions
+  automatically builds a Docker image, pushes to GHCR and deploys to the server on every push to main
 
-syncCount 0.3.0
+syncCount 0.4.0
