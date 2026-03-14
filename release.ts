@@ -21,7 +21,7 @@ if (!TYPE || !ALIAS[TYPE]) {
 const MESSAGE: string = process.argv[3];
 
 console.log('Bumping...');
-run('git add -A');
+run('git add -A -- :!package.json :!package-lock.json');
 run(`git commit -m "temp"`);
 run(`npm version ${ALIAS[TYPE]} --no-git-tag-version`);
 run('npm install --package-lock-only');
