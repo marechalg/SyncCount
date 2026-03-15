@@ -23,6 +23,7 @@ jobs:
           host: ${{ secrets.PI_HOST }}
           username: ${{ secrets.PI_USER }}
           key: ${{ secrets.PI_SSH }}
+          port: 2222
           script: |
             IMAGE=ghcr.io/${{ github.repository_owner }}/synccount:latest
             echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
