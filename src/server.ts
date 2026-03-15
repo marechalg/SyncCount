@@ -23,7 +23,7 @@ io.on('connection', (sock: Socket) => {
     sock.on('increment', (payload: ClickPayload) => {
         count++;
         io.emit('update', { count, lastClick: payload });
-        
+
         setImmediate(() => {
             writeFileSync('data/count.json', JSON.stringify({ count }))
         })
