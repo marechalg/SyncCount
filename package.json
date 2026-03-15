@@ -1,8 +1,8 @@
 {
   "name": "synccount",
   "version": "0.4.0",
-  "description": "",
-  "homepage": "https://github.com/marechalg/SyncCount#readme",
+  "description": "Count together in real-time !",
+  "homepage": "http://synccount.ovh",
   "bugs": {
     "url": "https://github.com/marechalg/SyncCount/issues"
   },
@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "tsx --tsconfig tsconfig.json src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "release": "tsx release.ts"
   },
   "dependencies": {
