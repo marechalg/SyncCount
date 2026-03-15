@@ -1,4 +1,4 @@
-const PROT = 'http';
+const PROT = 'https';
 const HOST = window.location.hostname;
 
 const sock = io(`${PROT}://${HOST}`);

@@ -40,8 +40,8 @@ const isUpToDate = changelog.includes(`syncCount ${VERSION}`);
 
 if (isUpToDate) {
     run(`gh release create ${VERSION} --notes-file CHANGELOG.md`);
-    console.info(`\n🚀 Successfully Released V${VERSION} with given CHANGELOG.md`);
+    console.info(`\n🚀 Successfully Released V${VERSION} with given CHANGELOG.md\n`);
 } else {
     run(`gh release create ${VERSION} --generate-notes --draft`);
-    console.info(`\n🚀 Successfully drafted V${VERSION} with a generated changelog`);
+    console.info(`\n🚀 Successfully drafted V${VERSION} with a generated changelog\n`);
 }
