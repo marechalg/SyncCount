@@ -31,5 +31,6 @@ jobs:
             docker stop synccount || true
             docker rm synccount || true
             docker run -d --name synccount --restart unless-stopped \
+              -p 3000:3000 \
               -e HOST=${{ secrets.HOST }} \
               $IMAGE
