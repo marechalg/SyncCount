@@ -4,6 +4,7 @@ WORKDIR /syncCount
 COPY package*.json ./
 RUN npm ci
 COPY . .
+RUN mkdir -p data
 RUN npm run build
 
 EXPOSE 3000
