@@ -1,8 +1,7 @@
 const PROT = 'http';
-const HOST = process.env.HOST;
-const PORT = 3000;
+const HOST = window.location.hostname;
 
-const sock = io(`${PROT}://${HOST}:${PORT}`);
+const sock = io(`${PROT}://${HOST}`);
 const count = document.getElementById('count');
 
 sock.on('update', data => {
